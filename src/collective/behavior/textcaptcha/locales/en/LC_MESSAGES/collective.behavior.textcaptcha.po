@@ -1,0 +1,100 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-09-10 08:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./profiles/default/types/iuemPageperso.xml
+msgid "A personal content type"
+msgstr ""
+
+#: ./controlpanel.py:23
+msgid "Drop down list for laboratory"
+msgstr ""
+
+#: ./pageperso.py:83
+msgid "Email"
+msgstr ""
+
+#: ./pageperso_templates/view.pt:92
+msgid "Enregistrer ce contact sur mon smartphone"
+msgstr ""
+
+#: ./pageperso.py:80
+msgid "Firstname"
+msgstr ""
+
+#: ./pageperso_templates/view.pt:99
+msgid "Il vous suffit maintenant de flasher ce Qrcode avec votre smartPhone et d'utiliser votre application preferee pour l'enregistrer."
+msgstr ""
+
+#: ./pageperso.py:94
+msgid "Laboratory name"
+msgstr ""
+
+#: ./pageperso.py:75
+msgid "Name"
+msgstr ""
+
+#: ./controlpanel.py:24
+msgid "One item per line. Corresponding picture must be copyed in the portal-skin/custom directory with a name like 'ums-3113.png' (lowercase, no space and non specials caracters)"
+msgstr ""
+
+#: ./controlpanel.py:41
+msgid "Page Perso Settings"
+msgstr ""
+
+#: ./pageperso.py:104
+msgid "Page content"
+msgstr ""
+
+#: ./controlpanel.py:32
+msgid "PagePerso content"
+msgstr ""
+
+#: ./controlpanel.py:42
+msgid "PagepersoSettingsDescription"
+msgstr ""
+
+#: ./pageperso_templates/view.pt:100
+msgid "Parmis les applications les plus connues pour lire les QRcode, nous vous suggerons :"
+msgstr ""
+
+#: ./pageperso.py:87
+msgid "Phone"
+msgstr ""
+
+#: ./pageperso.py:98
+msgid "Professional address"
+msgstr ""
+
+#: ./pageperso.py:62
+msgid "Program name"
+msgstr ""
+
+#: ./pageperso.py:68
+msgid "Program summary"
+msgstr ""
+
+#: ./pageperso.py:90
+msgid "Your picture"
+msgstr ""
+
+#: ./pageperso_templates/view.pt:58
+msgid "qrcode et fiche contact"
+msgstr ""
+
+#: ./profiles/default/types/iuemPageperso.xml
+msgid "user home page"
+msgstr ""
+
