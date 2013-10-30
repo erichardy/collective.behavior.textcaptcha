@@ -10,6 +10,7 @@ class ITextCaptchaSettingsForm(form.Schema):
                             title = _(u"list of captchas"),
                             description = _(u"one per line"),
                             default = [u't o-t_o',u'_t-it--i'],
+                            value_type  = schema.TextLine(),
                             )
 
 class TextCaptchaSettingsForm(controlpanel.RegistryEditForm):
