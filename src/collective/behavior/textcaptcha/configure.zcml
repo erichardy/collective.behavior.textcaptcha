@@ -1,12 +1,25 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:grok="http://namespaces.zope.org/grok"
     i18n_domain="collective.behavior.textcaptcha">
 
+  <includeDependencies package="." />
+  <include package="five.grok" />
+  <grok:grok package="." />
+  <!-- 
   <five:registerPackage package="." initialize=".initialize" />
+  -->
   <include file="behaviors.zcml" />
+
+  <browser:resourceDirectory
+    name="collective.behavior.textcaptcha"
+    directory="static" />
 
   <genericsetup:registerProfile
       name="default"
@@ -16,5 +29,11 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <!-- -*- extra stuff goes here -*- -->
+  <browser:page
+     name="textcaptcha-settings"
+     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+     class=".controlpanel.TextCaptchaSettingsFormSettingsControlPanel"
+     permission="cmf.ManagePortal"
+  />
   
 </configure>

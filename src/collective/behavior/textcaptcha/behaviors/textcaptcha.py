@@ -1,8 +1,8 @@
 import logging
 
 from five import grok
-
-from zope.interface import alsoProvides, Interface
+from datetime import datetime
+from zope.interface import implements, alsoProvides, Interface
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
 
@@ -17,22 +17,29 @@ class ITextCaptchaMarker(Interface):
     """Marker interfacer
     """
 
-class ITextCaptcha(Interface):
+class ITextCaptcha(form.Schema):
     """add text captcha to the content type
     """
+    captcha_value = schema.TextLine(
+                                    title = _(u"Here, the word to be copied"),
+                                    description = _(u"without spaces and without the chars - _"),
+                                    default = u"un texte a copier",
+                                    )
+    # form.mode(captcha_value='display')
+    
     captcha_input = schema.TextLine(
-                                    title = _u("Enter the text above"),
-                                    description = _u("without spaces and without the chars - _"),
+                                    title = _(u"Enter the text above"),
+                                    description = _(u"without spaces and without the chars - _"),
                                     )
     
-alsoProvides(ITextCaptcha)
+    
+alsoProvides(ITextCaptcha, form.IFormFieldProvider)
 
-class textCaptcha(form.Schema):
+class textCaptcha(object):
     """.
     """
-    grok.implements(ITextCaptcha)
-    grok.context(ITextCaptchaMarker)
+    implements(ITextCaptcha)
     
-    def __init__(self, context, event):
+    def __init__(self, context):
         self.context = context
         

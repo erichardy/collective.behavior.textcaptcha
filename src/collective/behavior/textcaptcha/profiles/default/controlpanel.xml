@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+    
+ <configlet
+    title="Text Captcha"
+    action_id="textcaptcha"
+    appId="collective.behavior.textcaptcha"
+    category="Products"
+    condition_expr=""
+    url_expr="string:${portal_url}/@@textcaptcha-settings"
+    visible="True" i18n:attributes="title">
+   <permission>cmf.ManagePortal</permission>
+  </configlet>
+ 
+</object>
