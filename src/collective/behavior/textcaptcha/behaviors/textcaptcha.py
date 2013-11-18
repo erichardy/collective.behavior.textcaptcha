@@ -28,14 +28,17 @@ class CaptchaNotValid(Invalid):
 class ITextCaptchaMarker(Interface):
     """Marker interfacer
     """
+# class ITextCaptcha(form.SchemaAddForm):
 
 class ITextCaptcha(form.Schema):
     """add text captcha to the content type
     """
+
     captcha_value = schema.TextLine(
                 title = _(u"Here, the word to be copied"),
                 description = _(u"without spaces and without the chars - _"),
-                default = u"toto titi",
+                default = u"th_es e_s",
+                required = False,
                 )
     # form.mode(captcha_value='display')
     
@@ -46,6 +49,7 @@ class ITextCaptcha(form.Schema):
     form.omitted('captcha_value', 'captcha_input',)
     form.no_omit(IAddForm, 'captcha_value', 'captcha_input',)
     
+    """
     @invariant
     def charsRemoved(self):
         captcha_value = self.captcha_value
@@ -58,23 +62,52 @@ class ITextCaptcha(form.Schema):
         if goodResult != captcha_input:
             raise CaptchaNotValid(_(u"The value entered for the captcha is not correct !"))
         return True
-
-    
-
+    """
     
 alsoProvides(ITextCaptcha, form.IFormFieldProvider)
+
+def randomCaptchaLabel():
+    registry = getUtility(IRegistry)
+    captchas = registry["collective.behavior.textcaptcha.controlpanel.ITextCaptchaSettingsForm.captchas"]
+    newCaptcha = choice(captchas)
+    # import pdb;pdb.set_trace()
+    return newCaptcha
+
 
 class textCaptcha(Form):
     """.
     """
     implements(ITextCaptcha)
-    ignoreContext = True
-
+    title = _(u"text captcha")
+    description = _(u"Provides a new field: a captcha text field")
+    
+    def __init__(self, context):
+        self.context = context
+        ignoreContext = True
+"""
+@form.validator(field=ITextCaptcha['captcha_input'],context=ITextCaptcha['captcha_value'])
+def charsRemovedOK(context):
+    # captcha_value = self.captcha_value
+    # captcha_input = self.captcha_input
+    import pdb;pdb.set_trace()
+    registry = getUtility(IRegistry)
+    chars = registry["collective.behavior.textcaptcha.controlpanel.ITextCaptchaSettingsForm.chars_to_remove"]
+    
+    goodResultList = [c for c in list(self.captcha_value) if c not in list(chars) ]
+    goodResult = join(goodResultList, sep='')
+    # logger.info(goodResult)
+    if goodResult != captcha_input:
+        raise CaptchaNotValid(_(u"The value entered for the captcha is not correct !"))
+    
+    raise CaptchaNotValid(_(u"The value entered for the captcha is not correct !"))
+    return True
+"""
 """
 NB: Je n'ai pas pu utiliser le processus ci-dessous pourtant decrit a :
 http://developer.plone.org/reference_manuals/active/schema-driven-forms/customising-form-behaviour/validation.html
 au paragraphe : Advanced field widget validators
-
+ca semble marcher en retirant le parametre : view=textCaptcha ...?
+"""
 class SampleValidator(validator.SimpleFieldValidator):
     
     def validate(self, value):
@@ -92,9 +125,9 @@ class SampleValidator(validator.SimpleFieldValidator):
             raise CaptchaNotValid(_(u"The value entered is not correct !"))
         return True
 
-validator.WidgetValidatorDiscriminators(SampleValidator, field=ITextCaptcha['captcha_input'], view=textCaptcha)
+validator.WidgetValidatorDiscriminators(SampleValidator, field=ITextCaptcha['captcha_input'])
 grok.global_adapter(SampleValidator)
-"""
+
 
 @form.default_value(field=ITextCaptcha['captcha_value'])
 def randomCaptcha(self):
@@ -103,6 +136,7 @@ def randomCaptcha(self):
     newCaptcha = choice(captchas)
     # import pdb;pdb.set_trace()
     return newCaptcha
+
 
 
 """

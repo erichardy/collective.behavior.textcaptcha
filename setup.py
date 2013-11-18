@@ -16,7 +16,7 @@ long_description = (
 
 setup(name='collective.behavior.textcaptcha',
       version=version,
-      description="",
+      description="Behavior for dexterity content type : add captcha text field",
       long_description=long_description,
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers

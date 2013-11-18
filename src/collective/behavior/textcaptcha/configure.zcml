@@ -17,6 +17,9 @@
   <!-- 
   <five:registerPackage package="." initialize=".initialize" />
   -->
+  
+  <i18n:registerTranslations directory="locales" />
+  
   <include file="behaviors.zcml" />
 
   <browser:resourceDirectory
@@ -25,9 +28,9 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="collective.behavior.textcaptcha"
+      title="text captcha"
       directory="profiles/default"
-      description="Installs the collective.behavior.textcaptcha package"
+      description="Provides a new field: a captcha text field"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <!-- -*- extra stuff goes here -*- -->

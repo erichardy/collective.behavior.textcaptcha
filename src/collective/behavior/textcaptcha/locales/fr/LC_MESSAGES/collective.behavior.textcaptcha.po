@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-10-30 12:53+0000\n"
+"POT-Creation-Date: 2013-11-18 16:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,37 +16,53 @@ msgstr ""
 
 #: ./controlpanel.py:23
 msgid "Captchas Settings"
-msgstr ""
+msgstr "Configuration des cpatchas"
 
-#: ./behaviors/textcaptcha.py:31
+#: ./behaviors/textcaptcha.py:46
 msgid "Enter the text above"
-msgstr ""
+msgstr "Recopier le texte ci-dessus"
 
-#: ./behaviors/textcaptcha.py:24
+#: ./behaviors/textcaptcha.py:38
 msgid "Here, the word to be copied"
-msgstr ""
+msgstr "Le texte à recopier sans les espaces ni autres caractères particuliers comme - _"
+
+#: ./behaviors/textcaptcha.py:26
+msgid "Please, enter the good value here !"
+msgstr "Merci de saisir une valeur correcte ici !"
+
+#: ./behaviors/textcaptcha.py:82
+msgid "Provides a new field: a captcha text field"
+msgstr "Fournit un champ de type chaptcha texte"
 
 #: ./controlpanel.py:24
 msgid "Text captchas settings"
-msgstr ""
+msgstr "Configuration des captchas de type texte"
 
 #: ./controlpanel.py:17
 msgid "The chars which have to be removed"
+msgstr "Les caractères qui doivent être retirés pour valider le captcha"
+
+#: ./behaviors/textcaptcha.py:125
+msgid "The value entered is not correct !"
 msgstr ""
 
 #: ./controlpanel.py:16
 msgid "chars to remove"
-msgstr ""
+msgstr "caractères à retirer"
 
 #: ./controlpanel.py:10
 msgid "list of captchas"
-msgstr ""
+msgstr "Liste des captchas"
 
 #: ./controlpanel.py:11
 msgid "one per line"
-msgstr ""
+msgstr "un par ligne"
 
-#: ./behaviors/textcaptcha.py:25
+#: ./behaviors/textcaptcha.py:81
+msgid "text captcha"
+msgstr "Captcha texte"
+
+#: ./behaviors/textcaptcha.py:39
 msgid "without spaces and without the chars - _"
-msgstr ""
+msgstr "sans les espaces ni - ou _"
 

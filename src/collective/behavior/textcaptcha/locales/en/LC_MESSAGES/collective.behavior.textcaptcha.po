@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-10-30 12:53+0000\n"
+"POT-Creation-Date: 2013-11-18 16:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,20 @@ msgstr ""
 msgid "Captchas Settings"
 msgstr ""
 
-#: ./behaviors/textcaptcha.py:31
+#: ./behaviors/textcaptcha.py:46
 msgid "Enter the text above"
 msgstr ""
 
-#: ./behaviors/textcaptcha.py:24
+#: ./behaviors/textcaptcha.py:38
 msgid "Here, the word to be copied"
+msgstr ""
+
+#: ./behaviors/textcaptcha.py:26
+msgid "Please, enter the good value here !"
+msgstr ""
+
+#: ./behaviors/textcaptcha.py:82
+msgid "Provides a new field: a captcha text field"
 msgstr ""
 
 #: ./controlpanel.py:24
@@ -32,6 +40,10 @@ msgstr ""
 
 #: ./controlpanel.py:17
 msgid "The chars which have to be removed"
+msgstr ""
+
+#: ./behaviors/textcaptcha.py:125
+msgid "The value entered is not correct !"
 msgstr ""
 
 #: ./controlpanel.py:16
@@ -46,7 +58,11 @@ msgstr ""
 msgid "one per line"
 msgstr ""
 
-#: ./behaviors/textcaptcha.py:25
+#: ./behaviors/textcaptcha.py:81
+msgid "text captcha"
+msgstr ""
+
+#: ./behaviors/textcaptcha.py:39
 msgid "without spaces and without the chars - _"
 msgstr ""
 

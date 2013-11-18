@@ -14,8 +14,8 @@
     <grok:grok package=".behaviors" />
 
     <plone:behavior
-        title="textcaptcha"
-        description="Provides a new field, a captcha text field"
+        title="text captcha"
+        description="Provides a new field: a captcha text field"
         provides=".behaviors.textcaptcha.ITextCaptcha"
         factory=".behaviors.textcaptcha.textCaptcha"
         marker=".behaviors.textcaptcha.ITextCaptchaMarker"
