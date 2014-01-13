@@ -17,6 +17,8 @@ from z3c.form.form import Form
 from z3c.form import validator
 
 from plone.directives import form
+from plone.supermodel import model
+
 from collective.behavior.textcaptcha.controlpanel import ITextCaptchaSettingsForm
 from collective.behavior.textcaptcha import MessageFactory as _
 
@@ -33,7 +35,11 @@ class ITextCaptchaMarker(Interface):
 class ITextCaptcha(form.Schema):
     """add text captcha to the content type
     """
-
+    model.fieldset(
+        'captcha',
+        label = _(u"captcha"),
+        fields = ['captcha_value', 'captcha_input']
+        )
     captcha_value = schema.TextLine(
                 title = _(u"Here, the word to be copied"),
                 description = _(u"without spaces and without the chars - _"),

@@ -32,7 +32,7 @@ msgstr "Merci de saisir une valeur correcte ici !"
 
 #: ./behaviors/textcaptcha.py:82
 msgid "Provides a new field: a captcha text field"
-msgstr "Fournit un champ de type chaptcha texte"
+msgstr "Fournit un champ de type captcha texte"
 
 #: ./controlpanel.py:24
 msgid "Text captchas settings"
