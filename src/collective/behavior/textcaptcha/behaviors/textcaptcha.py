@@ -24,37 +24,40 @@ from collective.behavior.textcaptcha import MessageFactory as _
 
 logger = logging.getLogger('textcaptcha')
 
+
 class CaptchaNotValid(Invalid):
     __doc__ = _(u"Please, enter the good value here !")
+
 
 class ITextCaptchaMarker(Interface):
     """Marker interfacer
     """
 # class ITextCaptcha(form.SchemaAddForm):
 
+
 class ITextCaptcha(form.Schema):
     """add text captcha to the content type
     """
     model.fieldset(
         'captcha',
-        label = _(u"captcha"),
-        fields = ['captcha_value', 'captcha_input']
+        label=_(u"captcha"),
+        fields=['captcha_value', 'captcha_input']
         )
     captcha_value = schema.TextLine(
-                title = _(u"Here, the word to be copied"),
-                description = _(u"without spaces and without the chars - _"),
-                default = u"th_es e_s",
-                required = False,
+                title=_(u"Here, the word to be copied"),
+                description=_(u"without spaces and without the chars - _"),
+                default=u"th_es e_s",
+                required=False,
                 )
     # form.mode(captcha_value='display')
-    
+
     captcha_input = schema.TextLine(
-                title = _(u"Enter the text above"),
-                description = _(u"without spaces and without the chars - _"),
+                title=_(u"Enter the text above"),
+                description=_(u"without spaces and without the chars - _"),
                 )
     form.omitted('captcha_value', 'captcha_input',)
     form.no_omit(IAddForm, 'captcha_value', 'captcha_input',)
-    
+
     """
     @invariant
     def charsRemoved(self):
@@ -114,17 +117,18 @@ http://developer.plone.org/reference_manuals/active/schema-driven-forms/customis
 au paragraphe : Advanced field widget validators
 ca semble marcher en retirant le parametre : view=textCaptcha ...?
 """
+
+
 class SampleValidator(validator.SimpleFieldValidator):
-    
+
     def validate(self, value):
         super(SampleValidator, self).validate(value)
-        
         # import pdb;pdb.set_trace()
         captcha_value = self.request.form['form.widgets.ITextCaptcha.captcha_value']
         captcha_input = self.request.form['form.widgets.ITextCaptcha.captcha_input']
         registry = getUtility(IRegistry)
         chars = registry["collective.behavior.textcaptcha.controlpanel.ITextCaptchaSettingsForm.chars_to_remove"]
-        goodResultList = [c for c in list(captcha_value) if c not in list(chars) ]
+        goodResultList = [c for c in list(captcha_value) if c not in list(chars)]
         goodResult = join(goodResultList, sep='')
         # logger.info(goodResult)
         if goodResult != captcha_input:
