@@ -94,7 +94,8 @@ def charsRemovedOK(context):
     chars = registry["collective.behavior.textcaptcha.controlpanel.\
             ITextCaptchaSettingsForm.chars_to_remove"]
 
-    goodResultList = [c for c in list(self.captcha_value) if c not in list(chars) ]
+    goodResultList = [c for c in list(self.captcha_value) if c not \
+    in list(chars) ]
     goodResult = join(goodResultList, sep='')
     # logger.info(goodResult)
     if goodResult != captcha_input:
@@ -119,30 +120,32 @@ class SampleValidator(validator.SimpleFieldValidator):
     def validate(self, value):
         super(SampleValidator, self).validate(value)
         # import pdb;pdb.set_trace()
-        captcha_value = self.request.form['form.widgets.ITextCaptcha.captcha_value']
-        captcha_input = self.request.form['form.widgets.ITextCaptcha.captcha_input']
+        form = self.request.form
+        captcha_value = form['form.widgets.ITextCaptcha.captcha_value']
+        captcha_input = form['form.widgets.ITextCaptcha.captcha_input']
         registry = getUtility(IRegistry)
-        chars = registry["collective.behavior.textcaptcha.controlpanel.ITextCaptchaSettingsForm.chars_to_remove"]
-        goodResultList = [c for c in list(captcha_value) if c not in list(chars)]
+        i = "collective.behavior.textcaptcha.controlpanel"
+        i += ".ITextCaptchaSettingsForm.chars_to_remove"
+        chars = registry[i]
+        goodResultList = [c for c in list(captcha_value)
+                          if c not in list(chars)]
         goodResult = join(goodResultList, sep='')
         # logger.info(goodResult)
         if goodResult != captcha_input:
             raise CaptchaNotValid(_(u"The value entered is not correct !"))
         return True
 
-validator.WidgetValidatorDiscriminators(SampleValidator, field=ITextCaptcha['captcha_input'])
+validator.WidgetValidatorDiscriminators(SampleValidator,
+                                        field=ITextCaptcha['captcha_input'])
 grok.global_adapter(SampleValidator)
 
 
 @form.default_value(field=ITextCaptcha['captcha_value'])
 def randomCaptcha(self):
     registry = getUtility(IRegistry)
-    captchas = registry["collective.behavior.textcaptcha.controlpanel.ITextCaptchaSettingsForm.captchas"]
+    i = "collective.behavior.textcaptcha.controlpanel"
+    i += ".ITextCaptchaSettingsForm.captchas"
+    captchas = registry[i]
     newCaptcha = choice(captchas)
     # import pdb;pdb.set_trace()
     return newCaptcha
-
-
-
-"""
-"""
