@@ -29,6 +29,9 @@ captcha_input_desc = captcha_value_desc
 
 class CaptchaNotValid(Invalid):
     __doc__ = _(u"Please, enter the good value here !")
+    """
+    Message affiché si le texte saisi par l'utilisateur n'est pas valide.
+    """
 
 
 class ITextCaptchaMarker(Interface):
