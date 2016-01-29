@@ -29,9 +29,14 @@ captcha_input_desc = captcha_value_desc
 
 class CaptchaNotValid(Invalid):
     __doc__ = _(u"Please, enter the good value here !")
-    """
-    Message affiché si le texte saisi par l'utilisateur n'est pas valide.
-    """
+
+    def justForDocumentation(self):
+        """
+        Exception levée si le captcha n'est pas valide. Le message affiché
+        si le texte saisi par l'utilisateur n'est pas valide est contenu dans
+        ``__doc__``.
+        """
+        pass
 
 
 class ITextCaptchaMarker(Interface):
@@ -66,6 +71,9 @@ alsoProvides(ITextCaptcha, form.IFormFieldProvider)
 
 
 def randomCaptchaLabel():
+    """
+    :returns: un des choix possibles de captcha mis dans le control panel
+    """
     registry = getUtility(IRegistry)
     i = "collective.behavior.textcaptcha.controlpanel."
     i += "ITextCaptchaSettingsForm.captchas"
@@ -76,7 +84,8 @@ def randomCaptchaLabel():
 
 
 class textCaptcha(Form):
-    """.
+    """La classe du formulaire lui-même, composé seulement de deux champs
+    texte, ``captcha_value`` (read only) et ``captcha_input``
     """
     implements(ITextCaptcha)
     title = _(u"text captcha")
@@ -121,6 +130,11 @@ ca semble marcher en retirant le parametre : view=textCaptcha ...?
 class SampleValidator(validator.SimpleFieldValidator):
 
     def validate(self, value):
+        """
+        :param value: la chaine contenue dans le champ ``captcha_input``
+        :type value: str
+        :returns: True ou lève l'exception ``CaptchaNotValid``
+        """
         super(SampleValidator, self).validate(value)
         # import pdb;pdb.set_trace()
         form = self.request.form

@@ -11,6 +11,12 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.autosummary',
+    'sphinx.ext.doctest',
+    'rst2pdf.pdfbuilder',
+    'sphinx.ext.todo',
+    'sphinx.ext.pngmath',
+    'sphinx.ext.ifconfig',
+    'epub2', 'mobi', 'autoimage', 'code_example',
 ]
 master_doc = 'index'
 exclude_patterns = ['links.rst', ]
