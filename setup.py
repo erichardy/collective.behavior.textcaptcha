@@ -48,6 +48,13 @@ setup(name='collective.behavior.textcaptcha',
           'zope.component',
           'rwproperty',
       ],
+      extras_require={'test':
+                      ['plone.app.testing',
+                       'unittest2',
+                       'plone.app.contenttypes',
+                       'plone.app.robotframework[debug]',
+                       'plone.api',
+                       ]},
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
