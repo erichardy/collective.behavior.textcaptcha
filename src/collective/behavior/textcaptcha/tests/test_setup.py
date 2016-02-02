@@ -95,3 +95,23 @@ class TestExample(unittest.TestCase):
         self.assertTrue(cont in self.browser.contents)
         self.assertTrue(id1 in self.portal.keys())
         # import pdb;pdb.set_trace()
+
+    def test_cp(self):
+        """test Control Panel
+        """
+        self.browser = Browser(self.app)
+        self.browser.open(self.portal.absolute_url() + '/login_form')
+        self.browser.getControl(name='__ac_name').value = SITE_OWNER_NAME
+        self.browser.getControl(name='__ac_password'
+                                ).value = SITE_OWNER_PASSWORD
+        self.browser.getControl(name='submit').click()
+        self.browser.addHeader(
+            'Authorization',
+            'Basic %s:%s' % (SITE_OWNER_NAME, SITE_OWNER_PASSWORD,)
+        )
+        setRoles(self.portal, TEST_USER_ID, ['Manager', ])
+        url = self.portal.absolute_url() + '/@@textcaptcha-settings'
+        self.browser.open(url)
+        self.assertTrue("Text captchas settings" in self.browser.contents)
+        self.browser.getControl(name="form.buttons.save").click()
+        self.assertTrue("Plone Configuration" in self.browser.contents)

@@ -29,7 +29,7 @@ class ITextCaptchaLayer(PloneSandboxLayer):
         """
         # Install products that use an old-style initialize() function
         # z2.installProduct(app, 'Products.PloneFormGen')
-        z2.installProduct(app, 'collective.behavior.textcaptcha')
+        # z2.installProduct(app, 'collective.behavior.textcaptcha')
 
 #    def tearDownZope(self, app):
 #        # Uninstall products installed above

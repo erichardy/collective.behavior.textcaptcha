@@ -24,3 +24,5 @@ var
 *.pyo
 *.tmp*
 docs/html/
+htmlcov
+.coverage

@@ -28,15 +28,8 @@ captcha_input_desc = captcha_value_desc
 
 
 class CaptchaNotValid(Invalid):
-    __doc__ = _(u"Please, enter the good value here !")
 
-    def justForDocumentation(self):
-        """
-        Exception levée si le captcha n'est pas valide. Le message affiché
-        si le texte saisi par l'utilisateur n'est pas valide est contenu dans
-        ``__doc__``.
-        """
-        pass
+    __doc__ = _(u"Please, enter the good value here !")
 
 
 class ITextCaptchaMarker(Interface):
@@ -69,18 +62,15 @@ class ITextCaptcha(form.Schema):
 
 alsoProvides(ITextCaptcha, form.IFormFieldProvider)
 
-
+"""
 def randomCaptchaLabel():
-    """
-    :returns: un des choix possibles de captcha mis dans le control panel
-    """
     registry = getUtility(IRegistry)
     i = "collective.behavior.textcaptcha.controlpanel."
     i += "ITextCaptchaSettingsForm.captchas"
     captchas = registry[i]
     newCaptcha = choice(captchas)
-    # import pdb;pdb.set_trace()
     return newCaptcha
+"""
 
 
 class textCaptcha(Form):
@@ -123,7 +113,7 @@ NB: Je n'ai pas pu utiliser le processus ci-dessous pourtant decrit a :
 http://developer.plone.org/reference_manuals/active/schema-driven-forms/\
 customising-form-behaviour/validation.html
 au paragraphe : Advanced field widget validators
-ca semble marcher en retirant le parametre : view=textCaptcha ...?
+ca semble marcher en retirant le parametre : view=textCaptcha ...???
 """
 
 
@@ -159,10 +149,12 @@ grok.global_adapter(SampleValidator)
 
 @form.default_value(field=ITextCaptcha['captcha_value'])
 def randomCaptcha(self):
+    """
+    :returns: un des choix possibles de captcha mis dans le control panel
+    """
     registry = getUtility(IRegistry)
     i = "collective.behavior.textcaptcha.controlpanel"
     i += ".ITextCaptchaSettingsForm.captchas"
     captchas = registry[i]
     newCaptcha = choice(captchas)
-    # import pdb;pdb.set_trace()
     return newCaptcha
