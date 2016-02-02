@@ -7,7 +7,7 @@ from plone.app.testing import IntegrationTesting
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
 from plone import api
 
-from plone.testing import z2
+# from plone.testing import z2
 
 # from zope.configuration import xmlconfig
 
