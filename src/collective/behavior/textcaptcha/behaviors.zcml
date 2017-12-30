@@ -20,5 +20,13 @@
         factory=".behaviors.textcaptcha.textCaptcha"
         marker=".behaviors.textcaptcha.ITextCaptchaMarker"
         />
-    
+
+    <plone:behavior
+        title="text captcha no fieldset"
+        description="Provides a new field: a captcha text field wihtout fieldset"
+        provides=".behaviors.textcaptchanf.ITextCaptchanf"
+        factory=".behaviors.textcaptchanf.textCaptchanf"
+        marker=".behaviors.textcaptchanf.ITextCaptchaNfMarker"
+        />
+
 </configure>
