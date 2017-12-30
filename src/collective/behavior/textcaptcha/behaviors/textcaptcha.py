@@ -85,6 +85,7 @@ class textCaptcha(Form):
     def __init__(self, context):
         self.context = context
 
+
 """
 @form.validator(field=ITextCaptcha['captcha_input'],
                 context=ITextCaptcha['captcha_value'])
@@ -141,6 +142,7 @@ class SampleValidator(validator.SimpleFieldValidator):
         if goodResult != captcha_input:
             raise CaptchaNotValid(_(u"The value entered is not correct !"))
         return True
+
 
 validator.WidgetValidatorDiscriminators(SampleValidator,
                                         field=ITextCaptcha['captcha_input'])

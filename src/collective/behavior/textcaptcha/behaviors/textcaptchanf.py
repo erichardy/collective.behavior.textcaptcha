@@ -18,7 +18,7 @@ from z3c.form.form import Form
 from z3c.form import validator
 
 from plone.directives import form
-from plone.supermodel import model
+# from plone.supermodel import model
 
 from collective.behavior.textcaptcha import MessageFactory as _
 

@@ -32,6 +32,7 @@ class TextCaptchaSettingsForm(controlpanel.RegistryEditForm):
     def updateWidgets(self):
         super(TextCaptchaSettingsForm, self).updateWidgets()
 
+
 cpnwp = controlpanel.ControlPanelFormWrapper
 
 
