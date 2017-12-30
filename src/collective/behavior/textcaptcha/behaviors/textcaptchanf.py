@@ -81,8 +81,8 @@ class SampleValidator(validator.SimpleFieldValidator):
         super(SampleValidator, self).validate(value)
         # import pdb;pdb.set_trace()
         form = self.request.form
-        captcha_value = form['form.widgets.ITextCaptcha.captcha_value']
-        captcha_input = form['form.widgets.ITextCaptcha.captcha_input']
+        captcha_value = form['form.widgets.ITextCaptchanf.captcha_value']
+        captcha_input = form['form.widgets.ITextCaptchanf.captcha_input']
         registry = getUtility(IRegistry)
         i = "collective.behavior.textcaptcha.controlpanel"
         i += ".ITextCaptchaSettingsForm.chars_to_remove"
